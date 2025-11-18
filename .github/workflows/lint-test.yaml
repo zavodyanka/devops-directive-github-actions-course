@@ -1,0 +1,14 @@
+name: Lint & Test
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: cd code
+      - run: eslint --ext .jsx --fix src
+      - run: vitest run
