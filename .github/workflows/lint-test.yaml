@@ -9,6 +9,11 @@ jobs:
   lint-test:
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
       - run: cd code
-      - run: eslint --ext .jsx --fix src
-      - run: vitest run
+      - run: npm ci
+      - run: npx eslint --ext .jsx --fix src
+      - run: npx vitest run
